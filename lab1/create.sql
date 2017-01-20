@@ -6,7 +6,7 @@ DROP SCHEMA Lab1 CASCADE;
 -- Create an empty schema for Lab1
 CREATE SCHEMA Lab1;
 -- Alter search path for Lab1 schema, specific to logged in user
-ALTER ROLE mjgates SET SEARCH_PATH to Lab1;
+-- ALTER ROLE mjgates SET SEARCH_PATH to Lab1;
 
 -- Create tables
 
@@ -19,4 +19,5 @@ CREATE TABLE Persons (
     --    and 2 decimal spaces after it.
     Salary DECIMAL(7,2)
 );
+
 
