@@ -1,0 +1,12 @@
+Lab Assignment 1
+CMPS 180 Winter 2017
+Due: 11:59pm Sunday Jan 22
+
+Author:
+Michael Gates
+mjgates@ucsc.edu
+Student ID: 1500669
+
+File List:
+- create.sql : Creates five tables (Persons, Houses, Landlords, Ownerships, Tenants) in schema Lab1.
+- README : This file.
