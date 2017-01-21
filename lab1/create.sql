@@ -1,10 +1,11 @@
 -- Lab1
 -- Michael Gates
 
--- Drop the Lab1 schema to avoid conflicts
+-- Drop the Lab1 schema and all tables to avoid conflicts
 DROP SCHEMA Lab1 CASCADE;
 -- Create an empty schema for Lab1
 CREATE SCHEMA Lab1;
+
 -- Alter search path for Lab1 schema, specific to logged in user
 -- ALTER ROLE mjgates SET SEARCH_PATH to Lab1;
 
