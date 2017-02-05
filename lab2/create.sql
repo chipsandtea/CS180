@@ -43,15 +43,16 @@ CREATE TABLE Ownerships (
 );
 
 CREATE TABLE Tenants (
-    HouseID INTEGER UNIQUE,
+    HouseID INTEGER,
     ApartmentNumber INTEGER,
-    LeaseTenantSSN INTEGER UNIQUE NOT NULL,
+    LeaseTenantSSN INTEGER NOT NULL,
     LeaseStartDate DATE NOT NULL,
     LeaseExpirationDate DATE,
     Rent DECIMAL(7,2),
     LastRentPaidDate DATE,
     RentOverdue BOOLEAN,
-    PRIMARY KEY (HouseID, ApartmentNumber)
+    PRIMARY KEY (HouseID, ApartmentNumber),
+    UNIQUE (HouseID, ApartmentNumber)
 );
 
 -- Display created tables
@@ -63,4 +64,3 @@ CREATE TABLE Tenants (
 \d Ownerships
 \d Tenants
 */
-
