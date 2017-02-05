@@ -13,7 +13,7 @@ CREATE SCHEMA Lab2;
 
 CREATE TABLE Persons (
     SSN INTEGER PRIMARY KEY,
-    NAME CHAR(30),
+    NAME CHAR(30) NOT NULL,
     HouseID INTEGER,
     ApartmentNumber INTEGER,
     -- Decimal with at most 5 digits to the left of the decimal point
@@ -23,14 +23,14 @@ CREATE TABLE Persons (
 
 CREATE TABLE Houses (
     HouseID INTEGER PRIMARY KEY,
-    HouseAddress VARCHAR(40),
+    HouseAddress VARCHAR(40) UNIQUE,
     ApartmentCount INTEGER,
     Color VARCHAR(40)
 );
 
 CREATE TABLE Landlords (
     LandlordID INTEGER PRIMARY KEY,
-    OwnerSSN INTEGER,
+    OwnerSSN INTEGER UNIQUE NOT NULL,
     LandlordAddress VARCHAR(40)
 );
 
@@ -43,10 +43,10 @@ CREATE TABLE Ownerships (
 );
 
 CREATE TABLE Tenants (
-    HouseID INTEGER,
+    HouseID INTEGER UNIQUE,
     ApartmentNumber INTEGER,
-    LeaseTenantSSN INTEGER,
-    LeaseStartDate DATE,
+    LeaseTenantSSN INTEGER UNIQUE NOT NULL,
+    LeaseStartDate DATE NOT NULL,
     LeaseExpirationDate DATE,
     Rent DECIMAL(7,2),
     LastRentPaidDate DATE,
