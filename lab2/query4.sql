@@ -4,4 +4,4 @@
 
 SELECT Persons.Name
 FROM Persons, Tenants
-WHERE Persons.Salary/2 > Tenants.Rent AND Tenants.LeaseTenantSSN = Persons.SSN;
+WHERE Persons.Salary/2 < Tenants.Rent AND Tenants.LeaseTenantSSN = Persons.SSN;
