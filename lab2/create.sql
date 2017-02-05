@@ -53,3 +53,14 @@ CREATE TABLE Tenants (
     RentOverdue BOOLEAN,
     PRIMARY KEY (HouseID, ApartmentNumber)
 );
+
+-- Display created tables
+/*
+\d
+\d Persons
+\d Houses
+\d Landlords
+\d Ownerships
+\d Tenants
+*/
+
