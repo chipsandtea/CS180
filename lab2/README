@@ -6,7 +6,3 @@ Author:
 Michael Gates
 mjgates@ucsc.edu
 Student ID: 1500669
-
-File List:
-- create.sql : Creates five tables (Persons, Houses, Landlords, Ownerships, Tenants) in schema Lab1.
-- README : This file.
