@@ -19,3 +19,4 @@ AND t.SSN = Tenants.LeaseTenantSSN
 AND l.SSN = Landlords.OwnerSSN
 AND Ownerships.LandlordID = Landlords.LandlordID
 AND Ownerships.HouseID = Houses.HouseID;
+
