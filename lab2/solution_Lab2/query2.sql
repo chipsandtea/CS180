@@ -1,0 +1,1 @@
+SELECT DISTINCT P.nameFROM Persons P, Houses HWHERE P.HouseID = H.HouseID AND H.HouseAddress = '1730 Alma Street';-- Equivalent query with the use of IN:SELECT DISTINCT P.nameFROM Persons PWHERE P.HouseID IN (SELECT H.HouseID from Houses H WHERE H.HouseAddress = '1730 Alma Street');

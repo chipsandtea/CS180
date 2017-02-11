@@ -1,0 +1,1 @@
+SELECT H.HouseAddress, P.name AS OwnerNameFROM Houses H, Ownerships O, Landlords L, Persons PWHERE H.ApartmentCount = 1 AND H.HouseId = O.HouseID       AND O.LandlordID = L.LandlordID AND L.OwnerSSN = P.SSN;

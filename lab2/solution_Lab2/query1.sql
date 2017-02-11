@@ -1,0 +1,1 @@
+SELECT SSN,nameFROM PersonsWHERE salary > 20000;

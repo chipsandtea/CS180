@@ -1,0 +1,2 @@
+SELECT DISTINCT H.color, H.ApartmentCountFROM Houses H, Persons PWHERE H.HouseID = P.HouseID AND P.name = 'John Smith';-- Equivalent query, with the use of IN:
+SELECT DISTINCT H.color, H.ApartmentCountFROM Houses HWHERE H.HouseID IN (SELECT P.HouseID FROM Persons P WHERE P.name = 'John Smith');
