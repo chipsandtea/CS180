@@ -1,5 +1,17 @@
+-- Merge
 
+-- Update Tenants from NewRentPayments, if LeaseTenantSSN and Rent match
+UPDATE Tenants
+SET LastRentPaidDate = nrp.DatePaid, RentOverdue = False
+FROM NewRentPayments nrp
+WHERE (nrp.LeaseTenantSSN, nrp.Rent) IN (
+     SELECT t.LeaseTenantSSN, t.Rent
+     FROM Tenants t 
+     WHERE t.LeaseTenantSSN = nrp.LeaseTenantSSN
+     AND  t.Rent = nrp.Rent
+     );
 
+-- Insert missing rows
 INSERT INTO Tenants
 SELECT n.HouseID,
     n.ApartmentNumber,
@@ -12,4 +24,5 @@ SELECT n.HouseID,
 FROM NewRentPayments n
 WHERE (n.HouseID, n.ApartmentNumber) NOT IN (
     SELECT t.HouseID, t.ApartmentNumber
-    FROM Tenants t)
+    FROM Tenants t);
+
