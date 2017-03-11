@@ -25,9 +25,9 @@ public class RunHousesApplication
             // and password for your Postgres account in the arguments of the
             // getConnection method below.
             connection = DriverManager.getConnection(
-                                                     "jdbc:postgresql://cmps180-db.lt.ucsc.edu/username",
-                                                     "username",
-                                                     "");
+                                                     "jdbc:postgresql://cmps180-db.lt.ucsc.edu/mjgates",
+                                                     "mjgates",
+                                                     "division50field");
             
             if (connection != null)
                 System.out.println("Connected to the database!");
