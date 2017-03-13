@@ -6,7 +6,6 @@ AS $$
 DECLARE
 	result INTEGER;
     person_ssn INTEGER;
-    --person_apt_num VARCHAR(40);
     house_id INTEGER;
     house_apt_count INTEGER;
     house_address VARCHAR(40);
