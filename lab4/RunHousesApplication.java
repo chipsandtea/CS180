@@ -32,11 +32,47 @@ public class RunHousesApplication
             if (connection != null)
                 System.out.println("Connected to the database!");
 
-            /* Include your code below to test the methods of the HousesApplication class
+            /* Include your code below to test the methods of the 
+	            HousesApplication class
              * The sample code in RunStoresApplication.java should be useful.
              * That code tests other methods for a different database schema.
              * Your code below: */
+             
+            // Get user input n and call
+            // getLeaseTenantsWithApartmentsInManyHouses(na)
+            try {
+                HousesApplication h = new HousesApplication(connection);
+                Scanner reader = new Scanner(System.in);  // Reading from System.in
+                System.out.println("Enter number of houses: ");
+                int n = reader.nextInt();
+                System.out.println("Results (SSN):");
+				System.out.println(h.getLeaseTenantsWithApartmentsInManyHouses(n));
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
             
+            
+            // Get user input of name and salary
+            // getLeaseTenantsWithApartmentsInManyHouses(na)
+            try {
+                HousesApplication h = new HousesApplication(connection);
+                // Reading from System.in
+                Scanner reader_name = new Scanner(System.in);
+                
+                System.out.println("Enter a name: ");
+                String name = reader_name.nextLine();
+                
+                Scanner reader_raise = new Scanner(System.in);
+                
+                System.out.println("Enter a salary: ");
+                int raise = reader_raise.nextInt();
+                
+                h.raiseSalary(name, raise);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
 
 
             

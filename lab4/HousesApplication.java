@@ -38,11 +38,27 @@ public class HousesApplication {
      */
     public List<Integer> getLeaseTenantsWithApartmentsInManyHouses(int numberOfHouses)
     {
-    List<Integer> result = new ArrayList<Integer>();
-        // your code here
-    
-    
-    
+		// Integer List result
+    	List<Integer> result = new ArrayList<Integer>();
+    	
+    	// Code added by mjgates
+    	String input = "SELECT t.LeaseTenantSSN FROM Tenants t GROUP BY t.LeaseTenantSSN HAVING COUNT(DISTINCT t.HouseID) >= ?";
+        try {
+	        // Prepare the SQL statement
+		    PreparedStatement get_lease_tenants = connection.prepareStatement(input);
+		    get_lease_tenants.setInt(1, numberOfHouses);
+		    ResultSet rs = get_lease_tenants.executeQuery();
+		    // Populate results 
+		    while (rs.next()) {
+		        result.add(rs.getInt(1));
+	    	}
+			rs.close();
+			get_lease_tenants.close();
+	    }							
+	    catch(Exception e) {
+	        e.printStackTrace();
+	        System.exit(-1);
+	    }
         // end of your code
         return result;
     }
@@ -55,12 +71,33 @@ public class HousesApplication {
      * raiseSalary should do nothing.  raiseSalary should be performed as a single SQL statement.
      */
     public void raiseSalary(String name, double raise) {
-        // your code here
-        
-        
-        
+    	// Code added by mjgates
+    	String validate_name_string = "SELECT name FROM Persons WHERE name = ?";
+    	String update_string = "UPDATE Persons SET Salary = Salary + ? WHERE Name = ?";
+        try {
+	        // Prepare the validate SQL statement
+	        PreparedStatement validate_name = connection.prepareStatement(validate_name_string);
+	        validate_name.setString(1, name);
+	        ResultSet rs = validate_name.executeQuery();
+	        if (!rs.isBeforeFirst()) {
+		        System.out.println("No matching name, no update performed.");
+	        }
+	        else {
+		        // Prepare the SQL update statement
+			    PreparedStatement update_salary = connection.prepareStatement(update_string);
+			    update_salary.setDouble(1, raise);
+			    update_salary.setString(2, name);
+				update_salary.executeUpdate();
+			    update_salary.close();
+			    System.out.println("Update complete");
+			}
+	    }			
+	    catch(Exception e) {
+	        e.printStackTrace();
+	        System.exit(-1);
+	    }
 
-        // end of your code
+        // end code added by mjgates
     }
     
     
