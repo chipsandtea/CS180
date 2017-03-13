@@ -83,6 +83,7 @@ public class HousesApplication {
 		        System.out.println("No matching name, no update performed.");
 	        }
 	        else {
+		        System.out.println("Matching name(s) found. Updating salary.");
 		        // Prepare the SQL update statement
 			    PreparedStatement update_salary = connection.prepareStatement(update_string);
 			    update_salary.setDouble(1, raise);
@@ -111,9 +112,24 @@ public class HousesApplication {
     public int movePersonToApartment(int SSN, String address, int ApartmentNumber)
     {
         int storedFunctionResult = 0;
-        // your code here
-        
-        
+        // Code added by mjgates
+        String stored_function_string = "SELECT * FROM movePerson(?, ?, ?)";
+        try {
+	        PreparedStatement stmt = connection.prepareStatement(stored_function_string);
+	        stmt.setInt(1, SSN);
+	        stmt.setString(2, address);
+	        stmt.setInt(3, ApartmentNumber);
+	        
+	        ResultSet rs = stmt.executeQuery();
+	        while(rs.next()) {
+		        storedFunctionResult = rs.getInt(1);
+	        }
+	        rs.close();
+        }
+        catch(Exception e) {
+	        e.printStackTrace();
+	        System.exit(-1);
+	    }
         // end of your code
         return storedFunctionResult;
         
